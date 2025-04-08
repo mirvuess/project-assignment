@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+  .container
+    .card
+      .card-body
+        .d-flex.justify-content-between.align-items-start
+          div
+            h1.card-title= book.title
+            h6.card-subtitle.mb-2.text-muted= book.author
+          .btn-group
+            a.btn.btn-warning(href=`/books/${book._id}/edit`) Edit
+            form.d-inline(action=`/books/${book._id}?_method=DELETE`, method="POST")
+              button.btn.btn-danger(type="submit") Delete
+
+        .mt-4
+          p
+            strong Genre: 
+            span= book.genre
+          p
+            strong Rating: 
+            span
+              - for (let i = 0; i < book.rating; i++)
+                span.text-warning ★
+              - for (let i = book.rating; i < 5; i++)
+                span.text-muted ★
+          hr
+          h5 Review
+          p.card-text= book.review
+          p.text-muted.mt-3
+            small Posted on #{new Date(book.createdAt).toLocaleDateString()}
+
+    .mt-4
+      a.btn.btn-secondary(href="/books") Back to All Reviews 

@@ -1,0 +1,100 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css')
+    style.
+      body {
+        background-color: #f8f9fa;
+        padding-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .navbar {
+        box-shadow: 0 2px 4px rgba(0,0,0,.1);
+      }
+      .book-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+      }
+      .book-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0,0,0,.1);
+      }
+      .review-preview {
+        color: #6c757d;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+      .btn {
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+      }
+      .btn-sm {
+        padding: 0.25rem 0.5rem;
+      }
+      .card-title {
+        color: #2c3e50;
+        font-weight: 600;
+      }
+      .card-subtitle {
+        font-size: 0.9rem;
+      }
+      .alert {
+        border-radius: 5px;
+        border: none;
+      }
+      .container {
+        flex: 1;
+      }
+      footer {
+        margin-top: 3rem;
+        padding: 1.5rem 0;
+        background-color: #343a40;
+        color: #f8f9fa;
+      }
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-4
+      .container
+        a.navbar-brand(href='/')
+          i.fas.fa-book-reader.me-2
+          | Book Reviews
+        button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNav')
+          span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          ul.navbar-nav
+            li.nav-item
+              a.nav-link(href='/')
+                i.fas.fa-home.me-1
+                | Home
+            li.nav-item
+              a.nav-link(href='/books')
+                i.fas.fa-books.me-1
+                | Books
+            li.nav-item
+              a.nav-link(href='/books/create')
+                i.fas.fa-plus-circle.me-1
+                | New Review
+
+    .container
+      if messages && messages.error
+        .alert.alert-danger.alert-dismissible.fade.show(role='alert')
+          i.fas.fa-exclamation-circle.me-2
+          | #{messages.error}
+          button.btn-close(type='button', data-bs-dismiss='alert')
+      if messages && messages.success
+        .alert.alert-success.alert-dismissible.fade.show(role='alert')
+          i.fas.fa-check-circle.me-2
+          | #{messages.success}
+          button.btn-close(type='button', data-bs-dismiss='alert')
+      block content
+
+    footer.footer
+      .container.text-center
+        p.mb-0
+          i.fas.fa-code.me-2
+          | This web application was created to fulfill Web Technology module's requirements and does not represent an actual company or service.
+
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js') 

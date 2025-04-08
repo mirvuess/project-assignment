@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  .jumbotron.text-center
+    h1.display-4.mb-4
+      i.fas.fa-book-open.me-3
+      | Welcome to Book Review App
+    p.lead.mb-4 Share your thoughts about the books you've read and discover new recommendations.
+    hr.my-4
+    p.mb-4 Create, read, update, and delete book reviews with ease.
+    a.btn.btn-primary.btn-lg(href="/books/create")
+      i.fas.fa-plus-circle.me-2
+      | Write a Review
+
+  .row.mt-5
+    .col-md-4.mb-4
+      .card.feature-card
+        .card-body.text-center
+          i.fas.fa-pen-fancy.fa-3x.mb-3.text-primary
+          h5.card-title Create Reviews
+          p.card-text Share your thoughts about books you've read, including title, author, genre, and your personal review.
+    .col-md-4.mb-4
+      .card.feature-card
+        .card-body.text-center
+          i.fas.fa-search.fa-3x.mb-3.text-info
+          h5.card-title Discover Books
+          p.card-text Browse through reviews from other readers and find your next favorite book.
+    .col-md-4.mb-4
+      .card.feature-card
+        .card-body.text-center
+          i.fas.fa-edit.fa-3x.mb-3.text-warning
+          h5.card-title Manage Your Reviews
+          p.card-text Easily update or delete your reviews as your thoughts evolve. 

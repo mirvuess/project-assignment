@@ -1,0 +1,49 @@
+extends ../layout
+
+block content
+  .d-flex.justify-content-between.align-items-center.mb-4
+    h1
+      i.fas.fa-book.me-2
+      | All Book Reviews
+    a.btn.btn-primary(href="/books/create")
+      i.fas.fa-plus-circle.me-2
+      | New Review
+
+  .row
+    each book in books
+      .col-md-4.mb-4
+        .card.book-card
+          .card-body
+            h5.card-title= book.title
+            h6.card-subtitle.mb-2.text-muted
+              i.fas.fa-user-edit.me-1
+              | #{book.author}
+            p.card-text
+              strong
+                i.fas.fa-tag.me-1
+                | Genre: 
+              span= book.genre
+            p.card-text
+              strong
+                i.fas.fa-star.me-1
+                | Rating: 
+              span
+                - for (let i = 0; i < book.rating; i++)
+                  span.text-warning
+                    i.fas.fa-star
+                - for (let i = book.rating; i < 5; i++)
+                  span.text-muted
+                    i.far.fa-star
+            p.card-text.review-preview= book.review.substring(0, 150) + '...'
+            .d-flex.justify-content-between.mt-3
+              a.btn.btn-info.btn-sm(href=`/books/${book._id}`)
+                i.fas.fa-book-reader.me-1
+                | Read More
+              .btn-group
+                a.btn.btn-warning.btn-sm(href=`/books/${book._id}/edit`)
+                  i.fas.fa-edit.me-1
+                  | Edit
+                form.d-inline(action=`/books/${book._id}?_method=DELETE`, method="POST")
+                  button.btn.btn-danger.btn-sm(type="submit")
+                    i.fas.fa-trash-alt.me-1
+                    | Delete 

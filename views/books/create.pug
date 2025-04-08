@@ -1,0 +1,68 @@
+extends ../layout
+
+block content
+  .container
+    h1.mb-4 Create New Book Review
+
+    form(action="/books", method="POST")
+      .mb-3
+        label.form-label(for="title") Book Title
+        input#title.form-control(
+          type="text",
+          name="title",
+          value=book.title || '',
+          class=errors && errors.find(e => e.param === 'title') ? 'is-invalid' : ''
+        )
+        if errors && errors.find(e => e.param === 'title')
+          .invalid-feedback= errors.find(e => e.param === 'title').msg
+
+      .mb-3
+        label.form-label(for="author") Author
+        input#author.form-control(
+          type="text",
+          name="author",
+          value=book.author || '',
+          class=errors && errors.find(e => e.param === 'author') ? 'is-invalid' : ''
+        )
+        if errors && errors.find(e => e.param === 'author')
+          .invalid-feedback= errors.find(e => e.param === 'author').msg
+
+      .mb-3
+        label.form-label(for="genre") Genre
+        input#genre.form-control(
+          type="text",
+          name="genre",
+          value=book.genre || '',
+          class=errors && errors.find(e => e.param === 'genre') ? 'is-invalid' : ''
+        )
+        if errors && errors.find(e => e.param === 'genre')
+          .invalid-feedback= errors.find(e => e.param === 'genre').msg
+
+      .mb-3
+        label.form-label(for="rating") Rating
+        select#rating.form-select(
+          name="rating",
+          class=errors && errors.find(e => e.param === 'rating') ? 'is-invalid' : ''
+        )
+          option(value="") Select rating
+          each i in [1,2,3,4,5]
+            option(
+              value=i,
+              selected=book.rating === i
+            )= i + ' stars'
+        if errors && errors.find(e => e.param === 'rating')
+          .invalid-feedback= errors.find(e => e.param === 'rating').msg
+
+      .mb-3
+        label.form-label(for="review") Review
+        textarea#review.form-control(
+          name="review",
+          rows="5",
+          class=errors && errors.find(e => e.param === 'review') ? 'is-invalid' : ''
+        )= book.review || ''
+        if errors && errors.find(e => e.param === 'review')
+          .invalid-feedback= errors.find(e => e.param === 'review').msg
+
+      .d-flex.gap-2
+        button.btn.btn-primary(type="submit") Create Review
+        a.btn.btn-secondary(href="/books") Cancel 
