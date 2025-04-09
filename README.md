@@ -47,7 +47,7 @@ This is a dynamic web application that allows users to create, read, update, and
 ## Installation and Setup
 1. Clone the repository:
    ```bash
-   git clone [your-repository-url]
+   git clone https://github.com/mirvuess/project-assignment.git
    cd book-review-app
    ```
 
@@ -58,7 +58,7 @@ This is a dynamic web application that allows users to create, read, update, and
 
 3. Create a .env file in the root directory and add your MongoDB connection string:
    ```
-   MONGODB_URI=your_mongodb_connection_string
+   MONGODB_URI="mongodb+srv://mirkomils:Gu2zxZv2vXvoCrVv@express-crud.6o8lm.mongodb.net/?retryWrites=true&w=majority&appName=Express-Crud"
    PORT=3000
    ```
 
@@ -84,8 +84,8 @@ This is a dynamic web application that allows users to create, read, update, and
 - body-parser: Request body parsing
 
 ## Links
-- GitHub Repository: [Your GitHub Repository URL]
-- Live Application: [Your Deployed Application URL]
+- GitHub Repository: `https://github.com/mirvuess/project-assignment.git`
+- Live Application: `https://00018521.vercel.app`
 
 ## Note
 This web application was created to fulfill Web Technology module's requirements and does not represent an actual company or service. 
